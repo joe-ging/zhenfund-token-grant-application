@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cognitive Bridge | ZhenFund Token Grant Pitch</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #050505;
+            --text-color: #ffffff;
+            --accent-glow: rgba(99, 102, 241, 0.4);
+            --card-bg: rgba(255, 255, 255, 0.03);
+            --card-border: rgba(255, 255, 255, 0.1);
+            --gradient-primary: linear-gradient(135deg, #6366f1, #a855f7, #ec4899);
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Background Effects */
+        .bg-glow {
+            position: fixed;
+            top: -20%;
+            left: -10%;
+            width: 70vw;
+            height: 70vw;
+            background: radial-gradient(circle, var(--accent-glow) 0%, transparent 60%);
+            z-index: -1;
+            filter: blur(100px);
+            animation: pulse 10s infinite alternate;
+        }
+
+        .bg-glow-right {
+            position: fixed;
+            bottom: -20%;
+            right: -10%;
+            width: 50vw;
+            height: 50vw;
+            background: radial-gradient(circle, rgba(236, 72, 153, 0.2) 0%, transparent 60%);
+            z-index: -1;
+            filter: blur(80px);
+            animation: pulse 12s infinite alternate-reverse;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 0.5; }
+            100% { transform: scale(1.1); opacity: 0.8; }
+        }
+
+        /* Container */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Hero Section */
+        header {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+        }
+
+        .tagline {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            border: 1px solid var(--card-border);
+            backdrop-filter: blur(10px);
+        }
+
+        h1 {
+            font-size: 4.5rem;
+            font-weight: 800;
+            margin: 0 0 1.5rem 0;
+            line-height: 1.1;
+            letter-spacing: -2px;
+        }
+
+        .gradient-text {
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-desc {
+            font-size: 1.2rem;
+            color: #a1a1aa;
+            max-width: 700px;
+            margin-bottom: 3rem;
+        }
+
+        /* Sections */
+        section {
+            padding: 5rem 0;
+            border-top: 1px solid var(--card-border);
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            font-weight: 600;
+        }
+
+        /* Glass Cards */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .glass-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 20px;
+            padding: 2.5rem;
+            backdrop-filter: blur(16px);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .card-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .card-text {
+            color: #a1a1aa;
+        }
+
+        /* Token Grant Highlight */
+        .token-highlight {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(236, 72, 153, 0.1));
+            border: 1px solid rgba(236, 72, 153, 0.3);
+            text-align: center;
+        }
+
+        .token-highlight h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #f472b6;
+        }
+
+        /* Architecture Diagram (CSS based) */
+        .arch-diagram {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .arch-step {
+            display: flex;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            border: 1px solid var(--card-border);
+        }
+
+        .arch-step .step-num {
+            font-weight: 800;
+            font-size: 1.5rem;
+            color: #a855f7;
+            margin-right: 1.5rem;
+            width: 30px;
+        }
+
+        /* Footer */
+        footer {
+            padding: 3rem 0;
+            text-align: center;
+            border-top: 1px solid var(--card-border);
+            color: #71717a;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="bg-glow"></div>
+    <div class="bg-glow-right"></div>
+
+    <div class="container">
+        <!-- Hero -->
+        <header>
+            <div>
+                <div class="tagline">ZhenFund Token Grant Pitch 2026</div>
+                <h1>Cognitive <span class="gradient-text">Bridge</span></h1>
+                <p class="hero-desc">
+                    打造通用神经符号中间件 (Neuro-Symbolic Middleware)。<br>
+                    将大模型 (LLM) 的认知推理能力与传统物理/符号引擎的绝对精准计算相咬合，构建物理世界的专属 Agent 平台。
+                </p>
+                <div style="color: #6366f1; font-weight: 600;">Founder: Margot Zhou (前网易有道 AI 业务负责人)</div>
+            </div>
+        </header>
+
+        <!-- Problem & Opportunity -->
+        <section>
+            <h2>我们看到了什么机会？</h2>
+            <div class="grid">
+                <div class="glass-card">
+                    <div class="card-icon">🧠</div>
+                    <div class="card-title">LLM 的局限 (System 1)</div>
+                    <div class="card-text">
+                        大语言模型拥有极佳的自然语言对话与启发式推理能力，但在物理空间计算、坐标映射、严密数学推理等刚性规则领域极易产生致命的“幻觉”。
+                    </div>
+                </div>
+                <div class="glass-card">
+                    <div class="card-icon">⚙️</div>
+                    <div class="card-title">符号引擎的孤岛 (System 2)</div>
+                    <div class="card-text">
+                        诸如 Stockfish（国际象棋）、MediaPipe（物理位姿）、Wolfram Alpha（数学）等传统引擎计算 100% 精准，但输出的是冷冰冰的代码和数据，普通用户无法交互。
+                    </div>
+                </div>
+                <div class="glass-card" style="grid-column: 1 / -1; background: rgba(99, 102, 241, 0.1); border-color: rgba(99, 102, 241, 0.3);">
+                    <div class="card-icon">🌉</div>
+                    <div class="card-title">机会：Cognitive Bridge (MCP Agent)</div>
+                    <div class="card-text">
+                        我们不试图用数据让 LLM 硬背数学和棋谱。我们构建一个**中间件层**，利用手机摄像头感知物理世界，将物理状态实时转换为指令（Tool Calling）交给符号引擎计算，再由 LLM 将计算结果转化为“苏格拉底式”的真人辅导语音反馈。这是一个完美的 <strong>Physical-World AI Agent</strong> 闭环。
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Technical Route -->
+        <section>
+            <h2>算法演进路线与 Token 需求</h2>
+            <p class="hero-desc">我们为什么极度需要 1亿 Token/天的算力支持？</p>
+            
+            <div class="arch-diagram">
+                <div class="arch-step">
+                    <div class="step-num">01</div>
+                    <div>
+                        <strong>早期：几何与规则模式匹配 (Rule-based)</strong>
+                        <p style="margin: 0.5rem 0 0 0; color: #a1a1aa; font-size: 0.9rem;">基础的 Prompt 生成阶段，将棋盘物理位姿等结构化数据直接输入模型产生对话。耗费少量 Token。</p>
+                    </div>
+                </div>
+                <div class="arch-step">
+                    <div class="step-num">02</div>
+                    <div>
+                        <strong>中期：最优变着线 (PV) 前瞻演绎</strong>
+                        <p style="margin: 0.5rem 0 0 0; color: #a1a1aa; font-size: 0.9rem;">开始引入动态树搜索。此时模型不仅需要评估当前状态，还需与引擎进行多次交互获取未来状态差异。Token 消耗显著增加。</p>
+                    </div>
+                </div>
+                <div class="arch-step" style="border-color: #ec4899; background: rgba(236, 72, 153, 0.05);">
+                    <div class="step-num" style="color: #ec4899;">03</div>
+                    <div>
+                        <strong>终极目标：弱分类器集成 (Ensemble of Models)</strong>
+                        <p style="margin: 0.5rem 0 0 0; color: #a1a1aa; font-size: 0.9rem;">
+                            这是我们向真格基金申请 Token 的核心原因。为了在 <1s 延迟内实现苏格拉底式的拟人交互，我们需要海量的算力和 Token，**针对不同特定场景微调大量的专精小模型 (Mini-Transformers)**。在并发测试 (1000+ 用户 Private Beta) 中，Agent 框架的高频实时对话将导致 Token 呈指数级消耗。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Traction & Vision -->
+        <section>
+            <h2>已有技术沉淀与项目势头</h2>
+            <div class="grid">
+                <div class="glass-card token-highlight">
+                    <h3>MacBase 数据护城河</h3>
+                    <p class="card-text">
+                        我们已独立开发了专属数据中台，完成了海量历史高价值对手数据的清洗与标注。这构成了我们中间件引擎极具壁垒的数据基石。
+                    </p>
+                </div>
+                <div class="glass-card token-highlight">
+                    <h3>MiraclePlus 验证势头</h3>
+                    <p class="card-text">
+                        项目已顺利获得 2026 奇绩创坛 (MiraclePlus) 秋季营面试资格。证明了顶级开发者社区对该 Agent 理念的高度认可。
+                    </p>
+                </div>
+            </div>
+        </section>
+        
+        <footer>
+            <p>Built for ZhenFund Token Grant Application. 2026.</p>
+        </footer>
+    </div>
+
+    <!-- Micro interactions -->
+    <script>
+        document.querySelectorAll('.glass-card').forEach(card => {
+            card.addEventListener('mousemove', e => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                card.style.setProperty('--mouse-x', `${x}px`);
+                card.style.setProperty('--mouse-y', `${y}px`);
+                card.style.background = `radial-gradient(circle at ${x}px ${y}px, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.02) 50%)`;
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.background = 'rgba(255, 255, 255, 0.03)';
+            });
+        });
+    </script>
+</body>
+</html>
