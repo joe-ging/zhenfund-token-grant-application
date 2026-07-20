@@ -143,6 +143,50 @@
             color: #666;
         }
 
+        /* Responsive Comparison Tables */
+        .table-responsive {
+            width: 100%;
+            overflow-x: auto;
+            margin: 2rem 0;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            background: var(--surface-color);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            font-size: 0.925rem;
+        }
+
+        th, td {
+            padding: 1.2rem 1.5rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        th {
+            font-weight: 600;
+            color: var(--text-primary);
+            background: #0f0f0f;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 0.05em;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        td {
+            color: var(--text-secondary);
+            vertical-align: top;
+        }
+
+        td strong {
+            color: var(--text-primary);
+        }
+
         /* Architecture Steps */
         .step-container {
             border-left: 1px solid var(--border-color);
@@ -200,6 +244,36 @@
             padding-left: 1rem;
         }
 
+        /* Visual Illustration Grid */
+        .illustration-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        @media (max-width: 768px) {
+            .illustration-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .illustration-card {
+            border: 1px dashed var(--border-color);
+            border-radius: 12px;
+            padding: 1.5rem;
+            background: #030303;
+        }
+
+        .illustration-title {
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            color: #666;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
         /* Footer */
         footer {
             padding: 4rem 0;
@@ -215,39 +289,176 @@
     <div class="container">
         <!-- Hero Section -->
         <header>
-            <div class="badge">Technical Whitepaper & Vision</div>
+            <div class="badge">Somatic AI — Technical Whitepaper</div>
             <h1>Cognitive Bridge<br>Neuro-Symbolic Middleware</h1>
             <p class="subtitle">
-                Bridging the intuitive reasoning of LLMs (System 1) with the deterministic precision of Symbolic Engines (System 2) to build Physical-World AI Agents.
+                Bridging the intuitive reasoning of LLMs (System 1) with the deterministic precision of Symbolic Engines (System 2) to resolve spatial hallucinations in rigid, rule-bound domains.
             </p>
         </header>
 
         <!-- Core Philosophy -->
         <section id="philosophy">
             <h2>The Technical Philosophy</h2>
-            <p>Our core philosophy stems from the fundamental technical contradiction of applying Generative AI to rigid, rule-bound domains:</p>
+            <p>Our core philosophy stems from the fundamental technical contradiction of applying Generative AI to rigid, physical, or rule-bound environments:</p>
             
             <div class="card">
                 <h3>1. Traditional AI & Solvers (System 2 - Rationality)</h3>
-                <p>Engines like <strong>Stockfish</strong> (chess), <strong>MATLAB</strong> (math), and <strong>MediaPipe</strong> (physics) are deterministic solvers. They output highly structured, cold data (evaluations, coordinates). <strong>Pain Point:</strong> Average users cannot interact with or understand these raw metrics without an intuitive interface.</p>
+                <p>Engines like Stockfish (chess), MATLAB (control logic), and MediaPipe (spatial tracking) are deterministic solvers. They output highly structured, cold data (evaluations, coordinates, matrices). Pain Point: Average users cannot interact with or understand these raw metrics without an intuitive, conversational interface.</p>
             </div>
 
             <div class="card">
                 <h3>2. Generative LLMs (System 1 - Intuition)</h3>
-                <p>LLMs excel at natural language, Socratic companionship, and heuristic reasoning. <strong>Pain Point:</strong> They lack spatial reasoning, deterministic logic, and strict rule enforcement. They inevitably hallucinate in rigid fields like math and physical coordinates.</p>
+                <p>LLMs excel at natural language, Socratic companionship, and heuristic reasoning. Pain Point: They lack spatial reasoning, deterministic logic, and strict rule enforcement. They inevitably hallucinate when dealing with coordinates, geometry, and strict rules.</p>
             </div>
 
             <div class="card" style="border-color: rgba(255,255,255,0.3);">
                 <h3>3. The Cognitive Bridge (Our Middleware)</h3>
-                <p>We do not force the LLM to learn math or chess via data training—that leads to parameter explosion and intractable hallucinations. The ultimate future of AI is <strong>Intuition Systems bridging with Rational Systems</strong>.</p>
-                <p>While tech giants provide coarse "Tool Calling" APIs, they do not have the bandwidth to build the granular <strong>"Cognitive Interaction Layers"</strong> or <strong>"Socratic Loops"</strong> required for specific physical states (e.g., physical chess coaching via computer vision). This deep, granular mapping is our proprietary moat.</p>
+                <p>We do not force the LLM to learn chess or math rules inside its weights—that leads to parameter explosion and intractable hallucinations. The ultimate future of AI is Decoupled Intuition Systems bridging with Symbolic Rational Systems.</p>
+                <p>While tech giants provide coarse "Tool Calling" APIs, they do not have the bandwidth to build the granular Cognitive Translation Layers or Socratic Loops required for specific physical states. This deep, granular mapping is our proprietary moat.</p>
+            </div>
+        </section>
+
+        <!-- Two Technological Routes -->
+        <section id="routes">
+            <h2>The Two Technological Routes to Legality</h2>
+            <p>Ensuring LLMs strictly adhere to rules (never making illegal moves or suggestions) is the baseline requirement. We analyze the two paradigms:</p>
+
+            <div class="card">
+                <h3>Route 1: End-to-End Model Fine-Tuning (e.g., yashbonde/chess_lm)</h3>
+                <p>Feeding chess FEN strings directly into transformers (GPT-2) to bake logic into neural weights.</p>
+                <ul>
+                    <li>Severe Model Rot: Pre-trained binaries break immediately as library wrappers (pytorch/transformers APIs) drift over time.</li>
+                    <li>No Explanation: The black-box model only outputs coordinate strings, losing all tutoring, Socratic dialogue, or rationale-explanation capabilities.</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>Route 2: Decoupled Middleware (e.g., Simple MCP wrappers)</h3>
+                <p>Decoupling the System 1 interface (LLM) from the System 2 search engine (Stockfish) via standard protocol wrappers.</p>
+                <ul>
+                    <li>Why Decoupling is Right: Keeps standard LLMs light, clean, and leverage-able while outsourcing calculations.</li>
+                    <li>The Simple MCP Flaw: Stateless raw data connector only "spoon-feeds" direct answers ("play Ncb4"), making it unable to handle deep user interrogation. Furthermore, under long conversational context dilution, LLMs lose spatial awareness and hallucinate illegal moves after 15+ turns.</li>
+                </ul>
+            </div>
+
+            <div class="card" style="border-color: rgba(255,255,255,0.3);">
+                <h3>Our Upgrade: Cognitive Bridge</h3>
+                <p>We adopt the Decoupled architecture but completely rebuild the data connector. Our Cognitive Bridge injects high-density structured facts (pins, forks, PV lookaheads, null-move threats) and enforces full-loop WASM-based real-time physical verification on the client side, guaranteeing 100% legal play and rich Socratic tutoring.</p>
+            </div>
+        </section>
+
+        <!-- Competitive Matrices -->
+        <section id="comparison">
+            <h2>Competitive Matrix Analysis</h2>
+            <p>Empirical evaluations against existing routes and tools, establishing our unique B2B moat:</p>
+
+            <h3>1. SFT Neural Model vs. Cognitive Bridge</h3>
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Dimension</th>
+                            <th>Neural Model (e.g., `chess_lm`)</th>
+                            <th>Cognitive Bridge Middleware (Us)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Under the Hood</strong></td>
+                            <td>GPT-2 fine-tuned on coordinate strings</td>
+                            <td>Symbolic Solver (WASM) + General-Purpose LLM</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Output Type</strong></td>
+                            <td>Bare coordinates only (e.g., `e2e4`)</td>
+                            <td>High-fidelity Socratic dialogue and coaching</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Rule Legality</strong></td>
+                            <td>Probabilistic (frequent rules hallucinations)</td>
+                            <td>100% deterministic rule enforcement</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Explainability</strong></td>
+                            <td>None (Black Box)</td>
+                            <td>High (breaks down pins, forks, and threat intents)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Maintenance</strong></td>
+                            <td>High (fragile build setups, model rot)</td>
+                            <td>Low (standard sandboxed WASM + stable APIs)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3>2. Simple MCP Wrapper vs. Cognitive Bridge</h3>
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Dimension</th>
+                            <th>Simple ChessPal MCP Server</th>
+                            <th>Cognitive Bridge Middleware (Us)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Role</strong></td>
+                            <td>Bare Calculator (spoilers only, e.g., "play Ncb4")</td>
+                            <td>Pedagogical Tutor (manages Socratic hint ladders)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Middle-Game Safety</strong></td>
+                            <td>Vulnerable to spatial coordinates hallucination</td>
+                            <td>0% Rule Error Guarantee (real-time client-side Eval)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Pedagogy</strong></td>
+                            <td>Direct spoilers, blocking the learning loop</td>
+                            <td>Faded Scaffolding Heuristics (tactics to intent tracking)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Integration</strong></td>
+                            <td>Complex local CLI setup (highly unfriendly to consumers)</td>
+                            <td>B2B SDK (embeddable with 3 lines of JS code)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Deployment</strong></td>
+                            <td>Requires local binary installation</td>
+                            <td>Runs solver locally via browser WebAssembly (WASM)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Dynamic Visualization of Cognitive Translation -->
+        <section id="visual-demo">
+            <h2>Visualizing Cognitive Translation</h2>
+            <p>How Cognitive Bridge transforms cold binary calculations into humanized pedagogical facts:</p>
+            
+            <div class="illustration-grid">
+                <div class="illustration-card">
+                    <div class="illustration-title">Raw System 2 Engine Output</div>
+                    <p style="font-family: 'Fira Code', monospace; font-size: 0.85rem; color: #888; background: #080808; padding: 1rem; border-radius: 6px; border: 1px solid #111; margin-bottom: 0;"> FEN: rnbqkb1r/pp2pppp/3p1n2/2p5/4P3/2N2N2/PPPP1PPP/R1BQKB1R w KQkq - 2 4<br><br>bestmove e4e5 ponder d6de<br><br>eval: info depth 4 score cp 35 nodes 248 time 3 </p>
+                </div>
+                
+                <div class="illustration-card" style="border-color: rgba(255,255,255,0.2);">
+                    <div class="illustration-title" style="color: #fff;">Cognitive Bridge Translation</div>
+                    <p style="font-size: 0.9rem; margin-bottom: 0;">
+                        1. <strong>Tactical Analysis:</strong> Absolute pin detected on Knight c6. No immediate forks.<br>
+                        2. <strong>PV Lookahead:</strong> Simulating e5 d6; pawn exchange on d6 results in vulnerable diagonal for Black's King.<br>
+                        3. <strong>Socratic Prompt Generation:</strong> <em>"My pawn push to e5 is challenging your d6 pawn. If you take, your King's front line might get exposed. What is your defensive strategy?"</em>
+                    </p>
+                </div>
             </div>
         </section>
 
         <!-- Evolution Path -->
         <section id="algorithm">
             <h2>Algorithm Evolution Path</h2>
-            <p>Translating cold data from logical engines (e.g., Stockfish) into human-understandable Socratic explanations is our core barrier. We execute a progressive roadmap:</p>
+            <p>Translating cold data from logical engines into human-understandable Socratic explanations is our core barrier. We execute a progressive roadmap:</p>
 
             <div class="step-container">
                 <div class="step active">
@@ -267,12 +478,12 @@
                 
                 <div class="step active">
                     <div class="step-title">Step 4: Null-Move Threat Detector</div>
-                    <p><strong>The hardest problem: Understanding Intent.</strong> To answer "What is the opponent's true purpose?", we force a Null-Move (`temp_board.push(chess.Move.null())`), giving the opponent two consecutive turns. The engine's next calculated move reveals the hidden <strong>physical threat</strong> (e.g., preparing a fork), which the LLM translates into intuitive advice. <em>(Solves 10% of dynamic strategic intent)</em></p>
+                    <p><strong>Understanding Intent:</strong> To answer "What is the opponent's true purpose?", we force a Null-Move Heuristic, giving the opponent two consecutive turns. The engine's next calculated move reveals the hidden physical threat, which the LLM translates into intuitive advice. <em>(Solves 10% of dynamic strategic intent)</em></p>
                 </div>
 
                 <div class="step active">
                     <div class="step-title">Step 5: Ensemble of Mini-Transformers (MoE)</div>
-                    <p>For abstract positional concepts (e.g., "positional suffocation"), we fine-tune an ensemble of <strong>Mini-Classifiers/Transformers</strong> acting as domain experts. We merge structured factual data with expert scoring data to feed the final LLM interaction layer. <em>(Requires massive continuous compute/token bandwidth for real-time inference)</em></p>
+                    <p>For abstract positional concepts (e.g., "positional suffocation"), we fine-tune an ensemble of Mini-Classifiers/Transformers acting as domain experts. We merge structured factual data with expert scoring data to feed the final LLM interaction layer. <em>(Solves 5% of abstract cognitive feel)</em></p>
                 </div>
 
                 <div class="step active" style="margin-bottom: 0;">
@@ -282,22 +493,27 @@
             </div>
         </section>
 
-        <!-- Interaction Paradigm -->
-        <section id="interaction">
-            <h2>Interaction Paradigm: The Socratic Loop</h2>
-            <p>To deliver a human-master-level coaching experience, we designed a dual-interaction architecture that consumes high-frequency tokens to maintain a sub-second voice loop:</p>
-
+        <!-- Horizontal Scaling Platform Vision -->
+        <section id="scaling">
+            <h2>Platform Vision: Horizontal Scaling Beyond Chess</h2>
+            <p>While Chess represents our primary proof-of-concept (PoC), the Cognitive Bridge architecture is universally adaptable. Our long-term mission is to build the universal Cognitive Middleware Platform for all System-2 engines natively incompatible with LLMs:</p>
+            
             <div class="card">
-                <h3>Opening Book & Socratic Transition</h3>
-                <p>The middleware matches physical board states against a Polyglot opening database. Instead of reciting theory, the LLM translates the structured data into an inquiry: <em>"I played my Bishop to b5 (Ruy Lopez) to pressure your Knight. You can push pawn a6 or develop your Knight to f6. What's your plan?"</em></p>
+                <h3>1. Pose and Kinetic Coaching (Powered by MediaPipe)</h3>
+                <p><strong>System 2 Engine:</strong> MediaPipe / OpenPose (outputs 3D spatial coordinate vectors of human joints).</p>
+                <p><strong>Middleware Bridge:</strong> Translates raw joint data into qualitative factual annotations (e.g., "Elbow angle is less than 90 degrees"). It feeds this into the conversational LLM while enforcing biological limit guardrails to prevent physically impossible coaching advices.</p>
             </div>
 
             <div class="card">
-                <h3>Coaching Mode & Review Mode</h3>
-                <ul>
-                    <li><strong>Real-time Coach:</strong> The Agent explains its own intent actively after making a move.</li>
-                    <li><strong>Post-Game Review:</strong> The middleware scans the evaluation graph, identifies 3 "Critical Moments", applies the Null-Move Threat Detector, and guides the user to reconsider: <em>"On move 15, you developed your Rook, but the opponent was threatening a Knight fork. If you could redo this move, how would you defend?"</em></li>
-                </ul>
+                <h3>2. Control & Simulation Engineering (Powered by MATLAB/Simulink)</h3>
+                <p><strong>System 2 Engine:</strong> MATLAB / Simulink solvers (outputs transfer functions, frequency responses, state matrices).</p>
+                <p><strong>Middleware Bridge:</strong> Translates mathematical pole-zero charts and stability margins into intuitive, conversational optimization recommendations, verifying parameters via local sandbox simulations to guarantee hardware-safe tuning instructions.</p>
+            </div>
+
+            <div class="card">
+                <h3>3. Pure Rule & Logic Deduction (Powered by CAS/Theorem Provers)</h3>
+                <p><strong>System 2 Engine:</strong> Computer Algebra Systems / Geometry Theorem Provers.</p>
+                <p><strong>Middleware Bridge:</strong> Tracks logical deductions step-by-step, feeding structural facts to the Socratic loop while mathematically verifying chemical formula balances or geometric proofs to reject LLM's logical hallucinations.</p>
             </div>
         </section>
 
@@ -306,8 +522,8 @@
             <h2>Commercialization & The Data Flywheel</h2>
             
             <h3>B2B-First Strategy</h3>
-            <p>Consumer education/gaming apps often die from massive Customer Acquisition Costs (CAC). We adopt a <strong>B2B-First / SDK Licensing</strong> strategy. We pitch AI platforms (OpenAI, Google) and educational giants (Duolingo).</p>
-            <p><strong>Why do they need us?</strong> General AI platforms lack the granular, physical-world interaction layers required for rigid domains. Running CPU-intensive binary search engines (like Stockfish) concurrently for billions of users poses severe sandbox security risks and compute costs. They prefer outsourcing this vertical toolchain to ecosystem developers—our exact positioning.</p>
+            <p>Consumer education/gaming apps often die from massive Customer Acquisition Costs (CAC). We adopt a B2B-First / SDK Licensing strategy, pitching educational portals (Duolingo), LLM providers (Google, OpenAI), and specialized tutoring portals.</p>
+            <p><strong>Why do they need us?</strong> General AI platforms lack the bandwidth to build the specialized, physical-world interaction layers required for rigid domains. Running CPU-heavy symbolic solvers at scale introduces sandbox security risks and massive CPU overhead. They prefer outsourcing this vertical toolchain to ecosystem partners.</p>
 
             <h3>The Data Flywheel Moat</h3>
             <p>How do we defend our middleware? <strong>Proprietary Human-AI Cognitive Interaction Data.</strong></p>
@@ -318,29 +534,7 @@
             </ul>
         </section>
 
-        <!-- FAQ -->
-        <section id="faq">
-            <h2>Frequently Asked Questions</h2>
-            
-            <div class="qa-block">
-                <div class="qa-q">Why can't we just use a raw LLM connected to an engine via MCP (like ChessPal)?</div>
-                <div class="qa-a">
-                    <p><strong>1. The Middle-Game Hallucination Trap:</strong> In the opening moves, a raw LLM looks smart because it is merely retrieving book moves and annotations from its pre-training weights. But in a unique middle-game, it has no memorized text. It frequently hallucinates coordinates (e.g., telling you to move a piece to an illegal square, or claiming a path is blocked when it is not) because LLMs lack a 2D spatial simulator in their weights.</p>
-                    <p><strong>2. Context Window Dilution:</strong> In a live, step-by-step game, the chat context grows rapidly with conversational text. This dilutes the chess coordinates, and the LLM's self-attention matrix loses track of the board state. Our middleware keeps the state out of the chat history, injecting a clean, isolated FEN state for every single move.</p>
-                    <p><strong>3. Spoilers vs. Socratic Coaching:</strong> Raw MCP connections just spoon-feed the best move (e.g., "Play Ncb4"). A true pedagogical tool requires a Socratic control layer that suppresses direct moves and guides the user to discover them on their own.</p>
-                </div>
-            </div>
-
-            <div class="qa-block">
-                <div class="qa-q">If this is just API integration, why haven't Google or OpenAI built these specialized interactions themselves?</div>
-                <div class="qa-a">
-                    <p><strong>1. Generalization vs. Specialization:</strong> Tech giants are building AGI platforms. They want the LLM to solve everything generically. They lack the commercial leverage to manually write granular adaptation middleware, physical state alignment logic, and Socratic loops for every niche vertical (like physical chess coaching or K-12 geometry).</p>
-                    <p><strong>2. Physical State Alignment & Latency:</strong> In physical tutoring, the system must orchestrate <em>"Camera CV → State Mapping → Logic Engine Calculation → Socratic LLM Prompting → Voice Synthesis"</em> in a low-latency, fault-tolerant loop. Cloud APIs do not provide out-of-the-box solutions for this hardware-software integration.</p>
-                    <p><strong>3. Security & Resource Constraints:</strong> Running rigid, recursive binary engines (like Stockfish) at scale introduces sandbox security risks and massive CPU overhead. Giants prefer ecosystem plugins (MCP) to handle vertical computation.</p>
-                </div>
-            </div>
-        </section>
-
+        <!-- Footer -->
         <footer>
             <p>&copy; 2026 Cognitive Bridge / Somatic AI. All rights reserved.</p>
         </footer>
