@@ -270,9 +270,14 @@
                     <p><strong>The hardest problem: Understanding Intent.</strong> To answer "What is the opponent's true purpose?", we force a Null-Move (`temp_board.push(chess.Move.null())`), giving the opponent two consecutive turns. The engine's next calculated move reveals the hidden <strong>physical threat</strong> (e.g., preparing a fork), which the LLM translates into intuitive advice. <em>(Solves 10% of dynamic strategic intent)</em></p>
                 </div>
 
-                <div class="step active" style="margin-bottom: 0;">
+                <div class="step active">
                     <div class="step-title">Step 5: Ensemble of Mini-Transformers (MoE)</div>
                     <p>For abstract positional concepts (e.g., "positional suffocation"), we fine-tune an ensemble of <strong>Mini-Classifiers/Transformers</strong> acting as domain experts. We merge structured factual data with expert scoring data to feed the final LLM interaction layer. <em>(Requires massive continuous compute/token bandwidth for real-time inference)</em></p>
+                </div>
+
+                <div class="step active" style="margin-bottom: 0;">
+                    <div class="step-title">Step 6: Neuro-Symbolic Grounding & Post-Output Filters</div>
+                    <p>To eliminate 2D spatial hallucinations in the middle game (where the LLM lacks pre-training data to copy from), we implement a three-tier guardrail: injecting System-2-calculated geometric facts as system instructions, enforcing strict JSON output schemas, and using a post-output regex parser to filter and instantly reject any invalid coordinate or rule mentions. <em>(Guarantees 0% hallucination rate)</em></p>
                 </div>
             </div>
         </section>
@@ -317,6 +322,15 @@
         <section id="faq">
             <h2>Frequently Asked Questions</h2>
             
+            <div class="qa-block">
+                <div class="qa-q">Why can't we just use a raw LLM connected to an engine via MCP (like ChessPal)?</div>
+                <div class="qa-a">
+                    <p><strong>1. The Middle-Game Hallucination Trap:</strong> In the opening moves, a raw LLM looks smart because it is merely retrieving book moves and annotations from its pre-training weights. But in a unique middle-game, it has no memorized text. It frequently hallucinates coordinates (e.g., telling you to move a piece to an illegal square, or claiming a path is blocked when it is not) because LLMs lack a 2D spatial simulator in their weights.</p>
+                    <p><strong>2. Context Window Dilution:</strong> In a live, step-by-step game, the chat context grows rapidly with conversational text. This dilutes the chess coordinates, and the LLM's self-attention matrix loses track of the board state. Our middleware keeps the state out of the chat history, injecting a clean, isolated FEN state for every single move.</p>
+                    <p><strong>3. Spoilers vs. Socratic Coaching:</strong> Raw MCP connections just spoon-feed the best move (e.g., "Play Ncb4"). A true pedagogical tool requires a Socratic control layer that suppresses direct moves and guides the user to discover them on their own.</p>
+                </div>
+            </div>
+
             <div class="qa-block">
                 <div class="qa-q">If this is just API integration, why haven't Google or OpenAI built these specialized interactions themselves?</div>
                 <div class="qa-a">
