@@ -348,7 +348,7 @@
             <p>Ensuring LLMs strictly adhere to rules (never making illegal moves or suggestions) is the baseline requirement. We analyze the two paradigms:</p>
 
             <div class="card">
-                <h3>Route 1: End-to-End Model Fine-Tuning (e.g., yashbonde/chess_lm)</h3>
+                <h3>Route 1: End-to-End Model Fine-Tuning (e.g., <a href="https://github.com/yashbonde/chess_lm" target="_blank" style="color: #fff; text-decoration: underline;">yashbonde/chess_lm</a>)</h3>
                 <p>Feeding chess FEN strings directly into transformers (GPT-2) to bake logic into neural weights. It tries to force-feed System 2 rational solver directly into System 1 neural connections.</p>
                 <ul>
                     <li>Severe Model Rot: Pre-trained binaries break immediately as library wrappers (pytorch/transformers APIs) drift over time.</li>
@@ -358,7 +358,7 @@
             </div>
 
             <div class="card">
-                <h3>Route 2: Decoupled Middleware (e.g., Simple MCP wrappers)</h3>
+                <h3>Route 2: Decoupled Middleware (e.g., <a href="https://github.com/joe-ging/chesspal-mcp-engine" target="_blank" style="color: #fff; text-decoration: underline;">Simple MCP wrappers (ChessPal)</a>)</h3>
                 <p>Decoupling the System 1 interface (LLM) from the System 2 search engine (Stockfish) via standard protocol wrappers.</p>
                 <ul>
                     <li>Why Decoupling is Right: Modern software engineering and S1/S2 architectures dictate that rational calculations must be decoupled from interactive generative frontends. This keeps standard LLMs light, clean, and leverage-able.</li>
@@ -383,8 +383,8 @@
                         <tr>
                             <th>Capability / Dimension</th>
                             <th>Pure LLM (GPT-4o / Gemini)</th>
-                            <th>Route 1: Chess LM (SFT GPT-2)</th>
-                            <th>Route 2: Simple MCP Wrapper (ChessPal)</th>
+                            <th>Route 1: <a href="https://github.com/yashbonde/chess_lm" target="_blank" style="color: #fff; text-decoration: underline;">Chess LM</a> (SFT GPT-2)</th>
+                            <th>Route 2: <a href="https://github.com/joe-ging/chesspal-mcp-engine" target="_blank" style="color: #fff; text-decoration: underline;">Simple MCP (ChessPal)</a></th>
                             <th>Our Project: Cognitive Bridge</th>
                         </tr>
                     </thead>
@@ -426,7 +426,7 @@
                         </tr>
                         <tr>
                             <td><strong>Representational Proof</strong></td>
-                            <td>Admits coordinates failure (see screenshot in FAQ)</td>
+                            <td>Admits coordinates failure (see <a href="#faq" style="color: #fff; text-decoration: underline;">screenshot</a> in FAQ)</td>
                             <td>Weights loading fails in 2026 environment due to rot</td>
                             <td>Serves purely as an engine coordinate proxy</td>
                             <td><strong>Translates engine cold metrics into cognitive tuition facts</strong></td>
@@ -556,7 +556,7 @@
                 <div class="qa-q">Where is the objective proof of LLM's absolute rule failure in chess?</div>
                 <div class="qa-a">
                     <p>The screenshot below is the perfect empirical smoking gun: when attempting to engage Google's frontier model Gemini in chess without backend tool calling / physical constraints, the model natively confesses its absolute inability to compute 2D spatial layouts, warning the user that it will play illegal coordinates:</p>
-                    <img src="gemini chess champ hallucination.png" alt="Google Gemini admitting rule failure without chess_lm tool calling" class="embedded-img">
+                    <a href="gemini chess champ hallucination.png" target="_blank"><img src="gemini chess champ hallucination.png" alt="Google Gemini admitting rule failure without chess_lm tool calling" class="embedded-img"></a>
                 </div>
             </div>
         </section>
