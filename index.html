@@ -157,11 +157,11 @@
             width: 100%;
             border-collapse: collapse;
             text-align: left;
-            font-size: 0.925rem;
+            font-size: 0.9rem;
         }
 
         th, td {
-            padding: 1.2rem 1.5rem;
+            padding: 1.2rem 1.2rem;
             border-bottom: 1px solid var(--border-color);
         }
 
@@ -170,7 +170,7 @@
             color: var(--text-primary);
             background: #0f0f0f;
             text-transform: uppercase;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             letter-spacing: 0.05em;
         }
 
@@ -181,6 +181,7 @@
         td {
             color: var(--text-secondary);
             vertical-align: top;
+            line-height: 1.5;
         }
 
         td strong {
@@ -274,6 +275,15 @@
             letter-spacing: 0.05em;
         }
 
+        /* Image Display */
+        .embedded-img {
+            max-width: 100%;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            margin: 1.5rem 0;
+            display: block;
+        }
+
         /* Footer */
         footer {
             padding: 4rem 0;
@@ -295,6 +305,20 @@
                 Bridging the intuitive reasoning of LLMs (System 1) with the deterministic precision of Symbolic Engines (System 2) to resolve spatial hallucinations in rigid, rule-bound domains.
             </p>
         </header>
+
+        <!-- Core Challenge: Why Chess? -->
+        <section id="challenge">
+            <h2>The Core Challenge: LLMs as Coaches</h2>
+            <p>
+                An autoregressive LLM can easily serve as a <strong>programming coach</strong>. Code is structurally sequential text; its logic maps perfectly onto the sequential, token-by-token nature of language model generation.
+            </p>
+            <p>
+                However, an LLM natively <strong>cannot serve as a chess coach</strong>. Chess requires highly rigorous 2D spatial reasoning, strict geometry, and rigid rule tracking. Because LLMs lack a spatial reasoning simulator in their neural weights, they suffer from severe coordinates and rule hallucinations—frequently inventing squares or proposing illegal movements.
+            </p>
+            <p style="border-left: 2px solid #fff; padding-left: 1rem; color: var(--text-primary); font-weight: 500;">
+                We use <strong>Chess</strong> as our immediate breakthrough and launchpad (以国际象棋为突破口) to validate our neuro-symbolic framework, creating the first production-grade cognitive middleware that guarantees 100% legal rules and rich Socratic tutoring.
+            </p>
+        </section>
 
         <!-- Core Philosophy -->
         <section id="philosophy">
@@ -349,84 +373,62 @@
 
         <!-- Competitive Matrices -->
         <section id="comparison">
-            <h2>Competitive Matrix Analysis</h2>
-            <p>Empirical evaluations against existing routes and tools, establishing our unique B2B moat:</p>
+            <h2>Comprehensive Capability Matrix Analysis</h2>
+            <p>A unified capability analysis comparing standard LLMs, neural models, simple MCP connectors, and our Cognitive Bridge middleware:</p>
 
-            <h3>1. SFT Neural Model vs. Cognitive Bridge</h3>
             <div class="table-responsive">
                 <table>
                     <thead>
                         <tr>
-                            <th>Dimension</th>
-                            <th>Neural Model (e.g., `chess_lm`)</th>
-                            <th>Cognitive Bridge Middleware (Us)</th>
+                            <th>Capability / Dimension</th>
+                            <th>Pure LLM (GPT-4o / Gemini)</th>
+                            <th>Route 1: Chess LM (SFT GPT-2)</th>
+                            <th>Route 2: Simple MCP Wrapper (ChessPal)</th>
+                            <th>Our Project: Cognitive Bridge</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
                             <td><strong>Under the Hood</strong></td>
-                            <td>GPT-2 fine-tuned on coordinate strings</td>
-                            <td>Symbolic Solver (WASM) + General-Purpose LLM</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Output Type</strong></td>
-                            <td>Bare coordinates only (e.g., `e2e4`)</td>
-                            <td>High-fidelity Socratic dialogue and coaching</td>
+                            <td>Generative text-weights only</td>
+                            <td>Fine-tuned coordinate-predicting transformer</td>
+                            <td>Stateless Stockfish proxy</td>
+                            <td><strong>Grounded Fact Engine + WASM physical rule simulator + LLM</strong></td>
                         </tr>
                         <tr>
                             <td><strong>Rule Legality</strong></td>
-                            <td>Probabilistic (frequent rules hallucinations)</td>
-                            <td>100% deterministic rule enforcement</td>
+                            <td>No guarantee (severe space hallucinations)</td>
+                            <td>High probability (still suffers spatial drifts)</td>
+                            <td>Guaranteed at start (hallucinates coordinates in midgame)</td>
+                            <td><strong>100% Absolute Legality (WASM physical Eval validator)</strong></td>
                         </tr>
                         <tr>
-                            <td><strong>Explainability</strong></td>
-                            <td>None (Black Box)</td>
-                            <td>High (breaks down pins, forks, and threat intents)</td>
+                            <td><strong>Socratic Pedagogy</strong></td>
+                            <td>Weak (fictional rules rationale)</td>
+                            <td>Completely lost (only outputs bare coordinates)</td>
+                            <td>Weak (direct spoilers only, e.g. "play Ncb4")</td>
+                            <td><strong>Excellent (Faded hint scaffolding & active tutoring loops)</strong></td>
                         </tr>
                         <tr>
-                            <td><strong>Maintenance</strong></td>
-                            <td>High (fragile build setups, model rot)</td>
-                            <td>Low (standard sandboxed WASM + stable APIs)</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <h3>2. Simple MCP Wrapper vs. Cognitive Bridge</h3>
-            <div class="table-responsive">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Dimension</th>
-                            <th>Simple ChessPal MCP Server</th>
-                            <th>Cognitive Bridge Middleware (Us)</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><strong>Role</strong></td>
-                            <td>Bare Calculator (spoilers only, e.g., "play Ncb4")</td>
-                            <td>Pedagogical Tutor (manages Socratic hint ladders)</td>
+                            <td><strong>Interrogation Depth</strong></td>
+                            <td>Very low (unstable reasoning)</td>
+                            <td>Completely lost</td>
+                            <td>None (no context facts provided to LLM)</td>
+                            <td><strong>Excellent (high-density geometric/PV/threat facts injected)</strong></td>
                         </tr>
                         <tr>
-                            <td><strong>Middle-Game Safety</strong></td>
-                            <td>Vulnerable to spatial coordinates hallucination</td>
-                            <td>0% Rule Error Guarantee (real-time client-side Eval)</td>
+                            <td><strong>Software Maintenance</strong></td>
+                            <td>Extremely low</td>
+                            <td>Extremely heavy (susceptible to dependency rot)</td>
+                            <td>Moderate (requires local Stockfish setups)</td>
+                            <td><strong>Extremely low (highly-cohesive embeddable SDK model)</strong></td>
                         </tr>
                         <tr>
-                            <td><strong>Pedagogy</strong></td>
-                            <td>Direct spoilers, blocking the learning loop</td>
-                            <td>Faded Scaffolding Heuristics (tactics to intent tracking)</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Integration</strong></td>
-                            <td>Complex local CLI setup (highly unfriendly to consumers)</td>
-                            <td>B2B SDK (embeddable with 3 lines of JS code)</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Deployment</strong></td>
-                            <td>Requires local binary installation</td>
-                            <td>Runs solver locally via browser WebAssembly (WASM)</td>
+                            <td><strong>Representational Proof</strong></td>
+                            <td>Admits coordinates failure (see screenshot in FAQ)</td>
+                            <td>Weights loading fails in 2026 environment due to rot</td>
+                            <td>Serves purely as an engine coordinate proxy</td>
+                            <td><strong>Translates engine cold metrics into cognitive tuition facts</strong></td>
                         </tr>
                     </tbody>
                 </table>
@@ -517,21 +519,26 @@
             </div>
         </section>
 
-        <!-- Business Model & Moat -->
-        <section id="business">
-            <h2>Commercialization & The Data Flywheel</h2>
+        <!-- FAQ -->
+        <section id="faq">
+            <h2>Frequently Asked Questions & Proof of Hallucination</h2>
             
-            <h3>B2B-First Strategy</h3>
-            <p>Consumer education/gaming apps often die from massive Customer Acquisition Costs (CAC). We adopt a B2B-First / SDK Licensing strategy, pitching educational portals (Duolingo), LLM providers (Google, OpenAI), and specialized tutoring portals.</p>
-            <p><strong>Why do they need us?</strong> General AI platforms lack the bandwidth to build the specialized, physical-world interaction layers required for rigid domains. Running CPU-heavy symbolic solvers at scale introduces sandbox security risks and massive CPU overhead. They prefer outsourcing this vertical toolchain to ecosystem partners.</p>
+            <div class="qa-block">
+                <div class="qa-q">Why haven't big tech giants (Google/OpenAI) built these adaptive middlewares themselves?</div>
+                <div class="qa-a">
+                    <p><strong>1. Generalization vs. Specialization:</strong> Tech giants are building AGI platforms. They want the LLM to solve everything generically. They lack the commercial leverage to manually write granular adaptation middleware, physical state alignment logic, and Socratic loops for every niche vertical (like physical chess coaching or K-12 geometry).</p>
+                    <p><strong>2. Physical State Alignment & Latency:</strong> In physical tutoring, the system must orchestrate <em>"Camera CV → State Mapping → Logic Engine Calculation → Socratic LLM Prompting → Voice Synthesis"</em> in a low-latency, fault-tolerant loop. Cloud APIs do not provide out-of-the-box solutions for this hardware-software integration.</p>
+                    <p><strong>3. Security & Resource Constraints:</strong> Running rigid, recursive binary engines (like Stockfish) at scale introduces sandbox security risks and massive CPU overhead. Giants prefer ecosystem plugins (MCP) to handle vertical computation.</p>
+                </div>
+            </div>
 
-            <h3>The Data Flywheel Moat</h3>
-            <p>How do we defend our middleware? <strong>Proprietary Human-AI Cognitive Interaction Data.</strong></p>
-            <ul>
-                <li><strong>Behavioral Trajectory Database:</strong> We accumulate granular data on "cognitive bottlenecks" (e.g., At what specific board state does a 7-year-old lose focus? Which Socratic prompt most efficiently helps them spot a pin?).</li>
-                <li><strong>Unreplicable Flywheel:</strong> These high-frequency feedback loops are completely private. General LLM wrappers cannot scrape this from the web.</li>
-                <li><strong>Feeding the Ensemble:</strong> We use this proprietary data to fine-tune our Mini-Classifiers, ensuring our heuristic recommendations grow exponentially more accurate with scale.</li>
-            </ul>
+            <div class="qa-block">
+                <div class="qa-q">Where is the objective proof of LLM's absolute rule failure in chess?</div>
+                <div class="qa-a">
+                    <p>The screenshot below is the perfect empirical smoking gun: when attempting to engage Google's frontier model Gemini in chess without backend tool calling / physical constraints, the model natively confesses its absolute inability to compute 2D spatial layouts, warning the user that it will play illegal coordinates:</p>
+                    <img src="gemini chess champ hallucination.png" alt="Google Gemini admitting rule failure without chess_lm tool calling" class="embedded-img">
+                </div>
+            </div>
         </section>
 
         <!-- Footer -->
