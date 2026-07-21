@@ -322,7 +322,7 @@
 
         <!-- Core Philosophy -->
         <section id="philosophy">
-            <h2>The Technical Philosophy</h2>
+            <h2>The Technical Philosophy: System 1 & System 2</h2>
             <p>Our core philosophy stems from the fundamental technical contradiction of applying Generative AI to rigid, physical, or rule-bound environments:</p>
             
             <div class="card">
@@ -336,9 +336,9 @@
             </div>
 
             <div class="card" style="border-color: rgba(255,255,255,0.3);">
-                <h3>3. The Cognitive Bridge (Our Middleware)</h3>
+                <h3>3. Cognitive Bridge Middleware (The Bridge)</h3>
                 <p>We do not force the LLM to learn chess or math rules inside its weights—that leads to parameter explosion and intractable hallucinations. The ultimate future of AI is Decoupled Intuition Systems bridging with Symbolic Rational Systems.</p>
-                <p>While tech giants provide coarse "Tool Calling" APIs, they do not have the bandwidth to build the granular Cognitive Translation Layers or Socratic Loops required for specific physical states. This deep, granular mapping is our proprietary moat.</p>
+                <p>While tech giants provide coarse "Tool Calling" APIs, they do not have the bandwidth to build the granular Cognitive Translation Layers or Socratic Loops required for specific physical states (e.g., physical chess coaching via computer vision). This deep, granular mapping is our proprietary moat.</p>
             </div>
         </section>
 
@@ -349,10 +349,11 @@
 
             <div class="card">
                 <h3>Route 1: End-to-End Model Fine-Tuning (e.g., yashbonde/chess_lm)</h3>
-                <p>Feeding chess FEN strings directly into transformers (GPT-2) to bake logic into neural weights.</p>
+                <p>Feeding chess FEN strings directly into transformers (GPT-2) to bake logic into neural weights. It tries to force-feed System 2 rational solver directly into System 1 neural connections.</p>
                 <ul>
                     <li>Severe Model Rot: Pre-trained binaries break immediately as library wrappers (pytorch/transformers APIs) drift over time.</li>
                     <li>No Explanation: The black-box model only outputs coordinate strings, losing all tutoring, Socratic dialogue, or rationale-explanation capabilities.</li>
+                    <li>Inefficient Coupling: Incurs extremely high training compute costs while failing to guarantee absolute correctness under complex game structures.</li>
                 </ul>
             </div>
 
@@ -360,13 +361,13 @@
                 <h3>Route 2: Decoupled Middleware (e.g., Simple MCP wrappers)</h3>
                 <p>Decoupling the System 1 interface (LLM) from the System 2 search engine (Stockfish) via standard protocol wrappers.</p>
                 <ul>
-                    <li>Why Decoupling is Right: Keeps standard LLMs light, clean, and leverage-able while outsourcing calculations.</li>
-                    <li>The Simple MCP Flaw: Stateless raw data connector only "spoon-feeds" direct answers ("play Ncb4"), making it unable to handle deep user interrogation. Furthermore, under long conversational context dilution, LLMs lose spatial awareness and hallucinate illegal moves after 15+ turns.</li>
+                    <li>Why Decoupling is Right: Modern software engineering and S1/S2 architectures dictate that rational calculations must be decoupled from interactive generative frontends. This keeps standard LLMs light, clean, and leverage-able.</li>
+                    <li>The Simple MCP Flaw: Stateless raw data connector only "spoon-feeds" direct answers ("play Ncb4"), making it unable to handle deep user Socratic interrogation. Furthermore, under long conversational context dilution (Context Window expansion), LLMs lose spatial awareness and hallucinate illegal moves after 15+ turns.</li>
                 </ul>
             </div>
 
             <div class="card" style="border-color: rgba(255,255,255,0.3);">
-                <h3>Our Upgrade: Cognitive Bridge</h3>
+                <h3>Our Upgrade: Cognitive Bridge Middleware</h3>
                 <p>We adopt the Decoupled architecture but completely rebuild the data connector. Our Cognitive Bridge injects high-density structured facts (pins, forks, PV lookaheads, null-move threats) and enforces full-loop WASM-based real-time physical verification on the client side, guaranteeing 100% legal play and rich Socratic tutoring.</p>
             </div>
         </section>
@@ -465,22 +466,22 @@
             <div class="step-container">
                 <div class="step active">
                     <div class="step-title">Step 1: Geometric Tactics & Rule Matching</div>
-                    <p>Utilizing deterministic retrieval (`python-chess`). We detect structural states like Absolute/Relative Pins and Forks purely through mathematical coordinate ray-casting, transforming them into contextual prompts for the LLM. <em>(Solves 40% of direct errors)</em></p>
+                    <p>Utilizing deterministic retrieval (`python-chess`) to perform ray-casting calculations. We detect structural states like Absolute Pins (`board.is_pinned(color, square)`), Relative Pins (calculating low-value blockers masking high-value targets), and Double Attacks/Forks (`board.attacks()`) purely through mathematical coordinate filters, transforming raw states into clear structural facts for the LLM. <em>(Solves 40% of direct errors)</em></p>
                 </div>
                 
                 <div class="step active">
                     <div class="step-title">Step 2: Principal Variation (PV) Forward Simulation</div>
-                    <p>We extract the optimal PV paths from the engine, duplicate the board state in memory (`temp_board = board.copy()`), and simulate the next 3 steps to detect implicit traps and high-value material loss before they happen. <em>(Solves 30% of hidden traps)</em></p>
+                    <p>We extract the optimal PV paths from Stockfish, duplicate the board state in memory (`temp_board = board.copy()`), and use a sequential loop to simulate the next 3 steps. This detects implicit traps and high-value material loss before they happen on the actual board. <em>(Solves 30% of hidden traps)</em></p>
                 </div>
                 
                 <div class="step active">
                     <div class="step-title">Step 3: Static Evaluation Delta Locator</div>
-                    <p>Intercepting internal debugging commands (like `eval` in Stockfish) to parse structural metrics (King Safety, Mobility, Space). If King Safety plummets while material remains equal, the locator instantly prompts the LLM: <em>"The pawn push exposed the King's diagonal."</em> <em>(Solves 15% of macro positional shifts)</em></p>
+                    <p>Intercepting Stockfish internal `eval` debugging commands to parse multi-dimensional metrics (King Safety, Mobility, Space). By comparing evaluating changes before and after a move, if King Safety plummets while material remains equal, the locator instantly prompts the LLM: <em>"The pawn push exposed the King's diagonal."</em> <em>(Solves 15% of macro positional shifts)</em></p>
                 </div>
                 
                 <div class="step active">
-                    <div class="step-title">Step 4: Null-Move Threat Detector</div>
-                    <p><strong>Understanding Intent:</strong> To answer "What is the opponent's true purpose?", we force a Null-Move Heuristic, giving the opponent two consecutive turns. The engine's next calculated move reveals the hidden physical threat, which the LLM translates into intuitive advice. <em>(Solves 10% of dynamic strategic intent)</em></p>
+                    <div class="step-title">Step 4: Null-Move Heuristic Threat Detector</div>
+                    <p><strong>Understanding Intent:</strong> To answer "What is the opponent's true purpose?", we force a Null-Move Heuristic (`temp_board.push(chess.Move.null())`), giving the opponent two consecutive turns. The engine's next calculated move reveals their hidden physical threat (e.g., preparing a fork), which the LLM translates into intuitive advice. <em>(Solves 10% of dynamic strategic intent)</em></p>
                 </div>
 
                 <div class="step active">
@@ -492,6 +493,25 @@
                     <div class="step-title">Step 6: Neuro-Symbolic Grounding & Post-Output Filters</div>
                     <p>To eliminate 2D spatial hallucinations in the middle game (where the LLM lacks pre-training data to copy from), we implement a three-tier guardrail: injecting System-2-calculated geometric facts as system instructions, enforcing strict JSON output schemas, and using a post-output regex parser to filter and instantly reject any invalid coordinate or rule mentions. <em>(Guarantees 0% hallucination rate)</em></p>
                 </div>
+            </div>
+        </section>
+
+        <!-- Interaction Paradigm -->
+        <section id="interaction">
+            <h2>Interaction Paradigm & The Socratic Loop</h2>
+            <p>To deliver a human-master-level coaching experience, we designed a dual-interaction architecture that translates raw analytical statistics into structured dialogue prompts:</p>
+
+            <div class="card">
+                <h3>1. Opening Book & Socratic Transition Heuristics</h3>
+                <p>During the opening phase, the middleware parses standard moves against a Polyglot opening database (.bin formats). Instead of dumping dry book names, the Cognitive Bridge matches the current variation (e.g., Ruy Lopez) and structures a Socratic transition: <em>"I played my Bishop to b5 to pressure your Knight. You have several options, such as pushing pawn a6 or出马 Nf6. What is your plan?"</em>, teaching students through inquiry rather than rote memorization.</p>
+            </div>
+
+            <div class="card">
+                <h3>2. Coaching Mode & Review Mode Dual-Flow</h3>
+                <ul>
+                    <li><strong>Coaching Mode (Live Game):</strong> The AI plays as an opponent but actively explains its own intent after every move, utilizing the Null-Move Threat Detector to articulate its tactical objectives.</li>
+                    <li><strong>Review Mode (Post-Game):</strong> The middleware plots the FEN score fluctuations, isolates the top 3 "Critical Moments" (where evaluation deltas swung dramatically), and guides the user through interactive self-correction: <em>"On move 15, you developed your rook, but the opponent was threatening a fork on c7. If you could redo this move, how would you defend?"</em></li>
+                </ul>
             </div>
         </section>
 
