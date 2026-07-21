@@ -316,7 +316,7 @@
                 However, an LLM natively <strong>cannot serve as a chess coach</strong>. Chess requires highly rigorous 2D spatial reasoning, strict geometry, and rigid rule tracking. Because LLMs lack a spatial reasoning simulator in their neural weights, they suffer from severe coordinates and rule hallucinations—frequently inventing squares or proposing illegal movements.
             </p>
             <p style="border-left: 2px solid #fff; padding-left: 1rem; color: var(--text-primary); font-weight: 500;">
-                We use <strong>Chess</strong> as our immediate breakthrough and launchpad to validate our neuro-symbolic framework, creating the first production-grade cognitive middleware that guarantees 100% legal rules and rich Socratic tutoring.
+                Even when Google launched its official Chess Champ feature (accessible at <a href="https://gemini.google.com/gem/chess-champ" target="_blank" style="color: #fff; text-decoration: underline;">gemini.google.com/gem/chess-champ</a>), the underlying LLM natively struggles with spatial reasoning under the hood (as demonstrated by our case study below). We use <strong>Chess</strong> as our immediate breakthrough and launchpad to validate our neuro-symbolic framework, creating the first production-grade cognitive middleware that guarantees 100% legal rules and rich Socratic tutoring.
             </p>
         </section>
 
@@ -555,7 +555,7 @@
             <div class="qa-block">
                 <div class="qa-q">Where is the objective proof of LLM's absolute rule failure in chess?</div>
                 <div class="qa-a">
-                    <p>The screenshot below is the perfect empirical smoking gun: when attempting to engage Google's frontier model Gemini in chess without backend tool calling / physical constraints, the model natively confesses its absolute inability to compute 2D spatial layouts, warning the user that it will play illegal coordinates:</p>
+                    <p>The screenshot below is the perfect empirical smoking gun: when attempting to engage Google's frontier model Gemini in chess (specifically using their official <a href="https://gemini.google.com/gem/chess-champ" target="_blank" style="color: #fff; text-decoration: underline;">Gemini Chess Champ</a> interface) without backend tool calling / physical constraints, the model natively confesses its absolute inability to compute 2D spatial layouts, warning the user that it will play illegal coordinates:</p>
                     <a href="gemini chess champ hallucination.png" target="_blank"><img src="gemini chess champ hallucination.png" alt="Google Gemini admitting rule failure without chess_lm tool calling" class="embedded-img"></a>
                 </div>
             </div>
