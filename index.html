@@ -351,7 +351,7 @@
                 <h3>Route 1: End-to-End Model Fine-Tuning (e.g., <a href="https://github.com/yashbonde/chess_lm" target="_blank" style="color: #fff; text-decoration: underline;">yashbonde/chess_lm</a>)</h3>
                 <p>Feeding chess FEN strings directly into transformers (GPT-2) to bake logic into neural weights. It tries to force-feed System 2 rational solver directly into System 1 neural connections.</p>
                 <ul>
-                    <li>Severe Model Rot: Pre-trained binaries break immediately as library wrappers (pytorch/transformers APIs) drift over time.</li>
+                    <li>Severe Model Rot: Pre-trained binaries break immediately as library wrappers (pytorch/transformers APIs) drift over time. This model rot is so critical that it has caused Google's own official Gemini Chess Champ service to be completely suspended (see the service interruption alert at the bottom of the page).</li>
                     <li>No Explanation: The black-box model only outputs coordinate strings, losing all tutoring, Socratic dialogue, or rationale-explanation capabilities.</li>
                     <li>Inefficient Coupling: Incurs extremely high training compute costs while failing to guarantee absolute correctness under complex game structures.</li>
                 </ul>
@@ -558,6 +558,25 @@
                     <p>The screenshot below is the perfect empirical smoking gun: when attempting to engage Google's frontier model Gemini in chess (specifically using their official <a href="https://gemini.google.com/gem/chess-champ" target="_blank" style="color: #fff; text-decoration: underline;">Gemini Chess Champ</a> interface) without backend tool calling / physical constraints, the model natively confesses its absolute inability to compute 2D spatial layouts, warning the user that it will play illegal coordinates:</p>
                     <a href="gemini chess champ hallucination.png" target="_blank"><img src="gemini chess champ hallucination.png" alt="Google Gemini admitting rule failure without chess_lm tool calling" class="embedded-img"></a>
                 </div>
+            </div>
+        </section>
+
+        <!-- System Alert: Service Suspension -->
+        <section id="service-interruption">
+            <h2 style="color: #ff4444; border-bottom-color: #331111;">System Interruption Alert</h2>
+            <div class="card" style="border: 1.5px solid #ff4444; background: #0c0202; box-shadow: 0 0 15px rgba(255, 68, 68, 0.15);">
+                <h3 style="color: #ff4444; font-family: 'Fira Code', monospace; display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1rem;">
+                    <span>⚠️</span> SERVICE TEMPORARILY SUSPENDED
+                </h3>
+                <p style="color: var(--text-primary); margin-bottom: 1rem;">
+                    Google's official <a href="https://gemini.google.com/gem/chess-champ" target="_blank" style="color: #fff; text-decoration: underline; font-weight: 600;">Gemini Chess Champ</a> service has been temporarily interrupted due to model dependency corruption (Model Rot) and class initializer mismatch in its underlying neural model wrappers.
+                </p>
+                <p style="color: var(--text-secondary); margin-bottom: 1.5rem; font-size: 0.95rem;">
+                    As documented in our local audits of the <code>chess_lm</code> codebase, legacy weight files (.pt) failed to resolve within Hugging Face's modern API configurations, throwing severe run-time execution errors. This is the ultimate proof that the end-to-end neural route is commercially unmaintainable, necessitating the sandboxed, WASM-driven Cognitive Bridge middleware platform.
+                </p>
+                <a href="gemini chess champ landing page interruption.png" target="_blank">
+                    <img src="gemini chess champ landing page interruption.png" alt="Gemini Chess Champ Interruption Alert" class="embedded-img" style="border-color: #331111;">
+                </a>
             </div>
         </section>
 
